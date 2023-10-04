@@ -7,19 +7,3 @@ Diagrams for Reddit
 |![FlamingKittens Diagrams - Class Diagram](https://github.com/FlamingPepper/CS151-FlamingKittens/assets/64181068/dc771cc5-4fe6-43e4-acab-08066214848a)|The class diagram shows all the variables and methods used to make up the program.|
 |![FlamingKitten Diagrams - Sequence (Post   Comments)](https://github.com/FlamingPepper/CS151-FlamingKittens/assets/64181068/2aa9f9c0-598e-4cfa-831f-a4cbf8249388)|A sequence diagram for Reddit depicts the interactions and messages exchanged between different components or objects when the user creates/removes a post or comment. The sequence starts with the user’s actions and flows through the Reddit web server, Reddit backend server, and database.|
 
-
-
-
-
-State Diagram
-The state diagram shows the current state of the system after the user performs a certain action.
-
-Use Case Diagram
-The use case diagram for Reddit represents the different interactions or actions that the user can perform within the system.
-
-Class Diagram
-The class diagram shows all the variables and methods used to make up the program.
-
-Sequence (Posts & Comments) Diagram
-A sequence diagram for Reddit depicts the interactions and messages exchanged between different components or objects when the user creates/removes a post or comment. The sequence starts with the user’s actions and flows through the Reddit web server, Reddit backend server, and database. 
-
