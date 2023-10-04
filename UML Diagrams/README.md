@@ -1,8 +1,7 @@
 Diagrams for Reddit
 | Diagram   | Description                |
 |-----------|----------------------------|
-| ![FlamingKitten Diagrams - Sequence (Post   Comments)](https://github.com/FlamingPepper/CS151-FlamingKittens/assets/64181068/2aa9f9c0-598e-4cfa-831f-a4cbf8249388)
- | The sequence diagram for login shows the interactions and communication between the different components (Page, Login, Login Auth, User Info Database) for the login page. It starts with the user putting in their info on the page. Then the page communicates with the Authenticator which checks with the database to see if the user info is correct or incorrect.. |
+| ![FlamingKitten Diagrams - Sequence (Post   Comments)](https://github.com/FlamingPepper/CS151-FlamingKittens/assets/64181068/2aa9f9c0-598e-4cfa-831f-a4cbf8249388)| The sequence diagram for login shows the interactions and communication between the different components (Page, Login, Login Auth, User Info Database) for the login page. It starts with the user putting in their info on the page. Then the page communicates with the Authenticator which checks with the database to see if the user info is correct or incorrect.. |
 | [Login.png](diagrams/Login.png) | Sequence diagram for user login process. |
 | ...       | ...                        |
 
