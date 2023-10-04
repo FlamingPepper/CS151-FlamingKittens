@@ -1,11 +1,10 @@
 Diagrams for Reddit
 | Diagram   | Description                |
 |-----------|----------------------------|
-| [Post.png](diagrams/Post.png) | Sequence diagram for posting a Reddit post. |
+| [Post.png](diagrams/Post.png) | The sequence diagram for login shows the interactions and communication between the different components (Page, Login, Login Auth, User Info Database) for the login page. It starts with the user putting in their info on the page. Then the page communicates with the Authenticator which checks with the database to see if the user info is correct or incorrect.. |
 | [Login.png](diagrams/Login.png) | Sequence diagram for user login process. |
 | ...       | ...                        |
-Sequence (Login) Diagram
-The sequence diagram for login shows the interactions and communication between the different components (Page, Login, Login Auth, User Info Database) for the login page. It starts with the user putting in their info on the page. Then the page communicates with the Authenticator which checks with the database to see if the user info is correct or incorrect.
+
 
 
 State Diagram
