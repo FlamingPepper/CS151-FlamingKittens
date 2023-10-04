@@ -1,9 +1,13 @@
 Diagrams for Reddit
 | Diagram   | Description                |
 |-----------|----------------------------|
-| ![FlamingKitten Diagrams - Sequence (Post   Comments)](https://github.com/FlamingPepper/CS151-FlamingKittens/assets/64181068/2aa9f9c0-598e-4cfa-831f-a4cbf8249388)| The sequence diagram for login shows the interactions and communication between the different components (Page, Login, Login Auth, User Info Database) for the login page. It starts with the user putting in their info on the page. Then the page communicates with the Authenticator which checks with the database to see if the user info is correct or incorrect.. |
-| [Login.png](diagrams/Login.png) | Sequence diagram for user login process. |
-| ...       | ...                        |
+|![FlamingKittens Diagrams - Sequence (Login)](https://github.com/FlamingPepper/CS151-FlamingKittens/assets/64181068/d4f30dc6-c296-4750-840c-02b35c874591) | The sequence diagram for login shows the interactions and communication between the different components (Page, Login, Login Auth, User Info Database) for the login page. It starts with the user putting in their info on the page. Then the page communicates with the Authenticator which checks with the database to see if the user info is correct or incorrect.. |
+|![FlamingKitten Diagrams - State Diagram](https://github.com/FlamingPepper/CS151-FlamingKittens/assets/64181068/5d7e501c-a8a3-496f-b239-0e555538807c)| The state diagram shows the current state of the system after the user performs a certain action. |
+|![FlamingKitten Diagrams - Use Case Diagram](https://github.com/FlamingPepper/CS151-FlamingKittens/assets/64181068/b9f24fbc-3fc5-43ab-b724-32d9ba899649)| The use case diagram for Reddit represents the different interactions or actions that the user can perform within the system. |
+|![FlamingKittens Diagrams - Class Diagram](https://github.com/FlamingPepper/CS151-FlamingKittens/assets/64181068/dc771cc5-4fe6-43e4-acab-08066214848a)|The class diagram shows all the variables and methods used to make up the program.|
+|![FlamingKitten Diagrams - Sequence (Post   Comments)](https://github.com/FlamingPepper/CS151-FlamingKittens/assets/64181068/2aa9f9c0-598e-4cfa-831f-a4cbf8249388)|A sequence diagram for Reddit depicts the interactions and messages exchanged between different components or objects when the user creates/removes a post or comment. The sequence starts with the user’s actions and flows through the Reddit web server, Reddit backend server, and database.|
+
+
 
 
 
