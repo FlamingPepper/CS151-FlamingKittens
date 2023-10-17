@@ -6,7 +6,7 @@ Project Structure
 
 **Classes:** <br />
 **Main**
-Tests the usage of other classes by creating users, posts, and comments
+Tests the usage of other classes by creating users, posts, and comments <br />
 **Post**
 Manages post-related operations which include getters, setters, and constructors used in the PostService class
 **PostService**
