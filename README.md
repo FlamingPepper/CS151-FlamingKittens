@@ -8,9 +8,9 @@ Project Structure
 **Main**
 Tests the usage of other classes by creating users, posts, and comments <br />
 **Post**
-Manages post-related operations which include getters, setters, and constructors used in the PostService class
+Manages post-related operations which include getters, setters, and constructors used in the PostService class <br />
 **PostService**
-Handles the management of posts. It implements the CRUD(Create, Read,Update,Delete) operations for posts
+Handles the management of posts. It implements the CRUD(Create, Read,Update,Delete) operations for posts <br />
 **Comment**
 Contains constructor, getters, and setters which are used in the CommentService class
 **CommentService**
