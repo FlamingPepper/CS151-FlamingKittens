@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.Collections;
 
 public class PostService {
     private final List<Post> posts;
@@ -40,5 +41,14 @@ public class PostService {
     // Delete
     public void deletePost(String postId) {
         posts.removeIf(post -> post.getPostId().equals(postId));
+    }
+
+    // Method to sort posts
+    public void sortPosts(List<Post> posts, String sortBy) {
+        if ("karma".equals(sortBy)) {
+            Collections.sort(posts, Comparator.comparingInt(Post::calculateKarma).reversed());
+        } else if ("date".equals(sortBy)) {
+            Collections.sort(posts, Comparator.comparing(Post::getCreatedAt));
+        }
     }
 }

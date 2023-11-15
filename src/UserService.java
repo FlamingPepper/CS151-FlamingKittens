@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class UserService {
     private List<User> users;
@@ -55,5 +57,13 @@ public class UserService {
         return users.stream()
                     .filter(u -> u.getUserId().equals(userId))
                     .findFirst();
+    }
+
+    public void sortUsers(List<User> users, String sortBy) {
+        if ("karma".equals(sortBy)) {
+            Collections.sort(users, Comparator.comparingInt(User::calculateTotalKarma).reversed());
+        } else if ("date".equals(sortBy)) {
+            Collections.sort(users, Comparator.comparing(User::getCreatedAt));
+        }
     }
 }

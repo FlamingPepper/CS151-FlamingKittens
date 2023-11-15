@@ -77,4 +77,15 @@ public class User {
     public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
+
+    public int calculateTotalKarma() {
+        int totalKarma = 0;
+        for (Post post : posts) {
+            totalKarma += post.calculateKarma();
+        }
+        for (Comment comment : comments) {
+            totalKarma += comment.calculateKarma();
+        }
+        return totalKarma;
+    }
 }

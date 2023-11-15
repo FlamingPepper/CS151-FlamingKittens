@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.Collections;
 
 public class CommentService {
     private final List<Comment> comments;
@@ -37,5 +38,13 @@ public class CommentService {
     // Delete
     public void deleteComment(String commentId) {
         comments.removeIf(comment -> comment.getCommentId().equals(commentId));
+    }
+
+    public void sortComments(List<Comment> comments, String sortBy) {
+        if ("karma".equals(sortBy)) {
+            Collections.sort(comments, Comparator.comparingInt(Comment::calculateKarma).reversed());
+        } else if ("date".equals(sortBy)) {
+            Collections.sort(comments, Comparator.comparing(Comment::getCreatedAt));
+        }
     }
 }

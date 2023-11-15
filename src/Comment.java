@@ -1,15 +1,18 @@
 package src;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Comment {
     private String commentId;
     private String content;
     private User author;
     private LocalDateTime createdAt;
-
     private Post post;
     private Comment parentComment;
+    private Set<String> upvotedBy;
+    private Set<String> downvotedBy;
 
     public Comment(String commentId, String content, User author, Post post) {
         this.commentId = commentId;
@@ -17,6 +20,8 @@ public class Comment {
         this.author = author;
         this.post = post;
         this.createdAt = LocalDateTime.now();
+        this.upvotedBy = new HashSet<>();
+        this.downvotedBy = new HashSet<>();
     }
 
     public Comment(String commentId, String content, User author, Comment parentComment) {
@@ -25,6 +30,8 @@ public class Comment {
         this.author = author;
         this.parentComment = parentComment;
         this.createdAt = LocalDateTime.now();
+        this.upvotedBy = new HashSet<>();
+        this.downvotedBy = new HashSet<>();
     }
 
     public String getCommentId() {
@@ -70,5 +77,19 @@ public class Comment {
     
     public void setParentComment(Comment parentComment) {
         this.parentComment = parentComment;
+    }
+
+    public void upvote(String userId) {
+        upvotedBy.add(userId);
+        downvotedBy.remove(userId);
+    }
+
+    public void downvote(String userId) {
+        downvotedBy.add(userId);
+        upvotedBy.remove(userId);
+    }
+    
+    public int calculateKarma() {
+        return upvotedBy.size() - downvotedBy.size();
     }
 }

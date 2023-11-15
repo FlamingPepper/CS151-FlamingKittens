@@ -4,6 +4,8 @@ package src;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Post {
     private String postId;
@@ -11,8 +13,9 @@ public class Post {
     private String content;
     private User user;
     private LocalDateTime createdAt;
-
     private List<Comment> comments;
+    private Set<String> upvotedBy;
+    private Set<String> downvotedBy;
 
     public Post(String postId, String title, String content, User user) {
         this.postId = postId;
@@ -21,6 +24,8 @@ public class Post {
         this.user = user;
         this.createdAt = LocalDateTime.now();
         this.comments = new ArrayList<>();
+        this.upvotedBy = new HashSet<>();
+        this.downvotedBy = new HashSet<>();
     }
 
     public String getPostId() {
@@ -71,5 +76,19 @@ public class Post {
 
     public void removeComment(Comment comment) {
     this.comments.remove(comment);
+    }
+
+    public void upvote(String userId) {
+        upvotedBy.add(userId);
+        downvotedBy.remove(userId);
+    }
+
+    public void downvote(String userId) {
+        downvotedBy.add(userId);
+        upvotedBy.remove(userId);
+    }
+
+    public int calculateKarma() {
+        return upvotedBy.size() - downvotedBy.size();
     }
 }
