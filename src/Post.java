@@ -91,4 +91,5 @@ public class Post {
     public int calculateKarma() {
         return upvotedBy.size() - downvotedBy.size();
     }
+    
 }

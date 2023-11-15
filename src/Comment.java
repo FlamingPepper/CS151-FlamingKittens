@@ -92,4 +92,5 @@ public class Comment {
     public int calculateKarma() {
         return upvotedBy.size() - downvotedBy.size();
     }
+    
 }
