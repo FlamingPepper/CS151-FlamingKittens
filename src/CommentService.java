@@ -40,6 +40,7 @@ public class CommentService {
         comments.removeIf(comment -> comment.getCommentId().equals(commentId));
     }
 
+    // Method to sort comments by karma
     public void sortComments(List<Comment> comments, String sortBy) {
         if ("karma".equals(sortBy)) {
             Collections.sort(comments, Comparator.comparingInt(Comment::calculateKarma).reversed());

@@ -43,7 +43,7 @@ public class PostService {
         posts.removeIf(post -> post.getPostId().equals(postId));
     }
 
-    // Method to sort posts
+    // Method to sort posts by karma
     public void sortPosts(List<Post> posts, String sortBy) {
         if ("karma".equals(sortBy)) {
             Collections.sort(posts, Comparator.comparingInt(Post::calculateKarma).reversed());
