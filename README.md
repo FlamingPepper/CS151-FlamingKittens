@@ -21,6 +21,6 @@ The backbone blueprint for creating user objects. Contains information about a u
 Handles the management of user-related operations. It implements the CRUD(Create, Read, Update, Delete) operations for the user. Services include a method to be able to choose between sorting users on the date created and karma! <br />
 
 **ChangeLog:** <br />
-User Class: Updated to include fields for karma, associated posts, comments, and methods to calculate user karma based on the upvotes and downvotes of their posts and comments. It also includes methods for upvoting and downvoting posts/comments.<br />
-Post and Comment Classes: Modified to incorporate functionality for upvoting, downvoting, and karma calculation within the classes themselves.<br />
-UserService, PostService, and CommentService Classes: Remain consistent in their responsibilities for CRUD operations on users, posts, and comments respectively, without directly handling karma or voting logic, delegating these responsibilities to the respective classes (User, Post, Comment). Services includes a method to be able to choose between sorting users/comments/posts on date created/ karma!<br />
+**User Class:** Updated to include fields for karma, associated posts, comments, and methods to calculate user karma based on the upvotes and downvotes of their posts and comments. It also includes methods for upvoting and downvoting posts/comments.<br />
+**Post and Comment Classes:** Modified to incorporate functionality for upvoting, downvoting, and karma calculation within the classes themselves.<br />
+**UserService, PostService, and CommentService Classes:** Remain consistent in their responsibilities for CRUD operations on users, posts, and comments respectively, without directly handling karma or voting logic, delegating these responsibilities to the respective classes (User, Post, Comment). Services include a method to be able to choose between sorting users/comments/posts on date created/ karma!<br />
