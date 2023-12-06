@@ -22,5 +22,10 @@ Team members: Brandon Ho, Ken Duong, Mike Chau
 - **User Class**: Updated to include fields for karma, associated posts, comments, and methods for karma calculation based on upvotes and downvotes. Added methods for upvoting and downvoting posts/comments.
 - **Post and Comment Classes**: Modified to incorporate functionality for upvoting, downvoting, and karma calculation within the classes.
 - **UserService, PostService, and CommentService Classes**: Remain consistent in CRUD responsibilities for users, posts, and comments. Delegates karma/voting logic to respective classes (User, Post, Comment). Includes methods for sorting users/posts/comments by date created/karma.
-- **RedditClone Class**: Implemented Home, Comments, and Users pages. Designed UI layout for navigation, post display, and user interaction using JavaFX components. Handles post/comment upvoting and downvoting. Allows profile picture uploads via FileChooser.
+- **RedditClone Class**: Implemented Home, Comments, and Users pages. Designed UI layout for navigation, post display, and user interaction using JavaFX components. Handles post/comment upvoting and downvoting. Allows profile picture uploads via FileChooser. Designed a clean and organized UI layout for easy navigation and interaction.
+ We used JavaFX components like buttons, labels, and image views to build the graphical interface. Functionality included listing posts sorted by date/karma, and allowing upvote/downvote actions. 
+Developed functionalities to display user profiles with usernames and karma scores. Enabled users to set profile pictures via FileChooser for image uploads.
+ Organized code functionalities into methods for creating Home, Users, and Comments pages. 
+Employed services to manage posts, comments, and users within the application structure including up and downvotes
+
 
