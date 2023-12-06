@@ -1,6 +1,5 @@
 package src;
 
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,41 +40,41 @@ public class Post {
     }
 
     public User getUser() {
-    return user;
+        return user;
     }
 
     public LocalDateTime getCreatedAt() {
-    return createdAt;
+        return createdAt;
     }
 
     public List<Comment> getComments() {
-    return new ArrayList<>(comments);
+        return new ArrayList<>(comments);
     }
 
     // Setters
     public void setPostId(String postId) {
-    this.postId = postId;
+        this.postId = postId;
     }
 
     public void setTitle(String title) {
-    this.title = title;
+        this.title = title;
     }
 
     public void setContent(String content) {
-    this.content = content;
+        this.content = content;
     }
 
     public void setUser(User user) {
-    this.user = user;
+        this.user = user;
     }
 
     // Additional methods for comments
     public void addComment(Comment comment) {
-    this.comments.add(comment);
+        this.comments.add(comment);
     }
 
     public void removeComment(Comment comment) {
-    this.comments.remove(comment);
+        this.comments.remove(comment);
     }
 
     public void upvote(String userId) {
@@ -91,5 +90,4 @@ public class Post {
     public int calculateKarma() {
         return upvotedBy.size() - downvotedBy.size();
     }
-    
 }

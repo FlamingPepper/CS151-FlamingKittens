@@ -7,7 +7,7 @@ import java.util.Optional;
 import java.util.Collections;
 
 public class PostService {
-    private final List<Post> posts;
+    private static List<Post> posts;
 
     public PostService() {
         this.posts = new ArrayList<>();
@@ -25,7 +25,7 @@ public class PostService {
                 .findFirst();
     }
 
-    public List<Post> getAllPosts() {
+    public static List<Post> getAllPosts() {
         posts.sort(Comparator.comparing(Post::getCreatedAt)); // Sort by creation time
         return new ArrayList<>(posts);
     }
@@ -51,5 +51,5 @@ public class PostService {
             Collections.sort(posts, Comparator.comparing(Post::getCreatedAt));
         }
     }
-    
+
 }

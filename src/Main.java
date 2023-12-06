@@ -1,119 +1,162 @@
 package src;
 
 import java.util.Optional;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
-        // User Service
-        UserService userService = new UserService();
 
-        // Create a user
-        User user1 = new User("1", "FlamingKitten", "FlamingKitten@gmail.com", "123qwe123");
-        userService.addUser(user1);
+    private UserService userService;
+    private PostService postService;
+    private CommentService commentService;
 
-        // Read user by ID
-        Optional<User> fetchedUser = userService.getUserById("1");
-        fetchedUser.ifPresent(user -> System.out.println("User fetched: " + user.getUsername()));
-
-        // Post Service
-        PostService postService = new PostService();
-
-        // Create a post
-        Post post1 = new Post("p1", "My First Post", "This is the content of my first post.", user1);
-        postService.addPost(post1);
-
-        // Read post by ID
-        Optional<Post> fetchedPost = postService.getPostById("p1");
-        fetchedPost.ifPresent(post -> System.out.println("Post fetched: " + post.getTitle()));
-
-        // Comment Service
-        CommentService commentService = new CommentService();
-
-        // Create a comment for a post
-        Comment comment1 = new Comment("c1", "Great post!", user1, post1);
-        commentService.addComment(comment1);
-
-        // Read comment by ID
-        Optional<Comment> fetchedComment = commentService.getCommentById("c1");
-        fetchedComment.ifPresent(comment -> System.out.println("Comment fetched: " + comment.getContent()));
-
-        // Create a reply to a comment
-        Comment reply1 = new Comment("c2", "Thank you!", user1, comment1);
-        commentService.addComment(reply1);
-
-        // Fetching all comments
-        for (Comment c : commentService.getAllComments()) {
-            System.out.println("Comment ID: " + c.getCommentId() + ", Content: " + c.getContent());
-        }
-
-        // Updating a comment
-        commentService.updateComment("c1", "Amazing post!");
-        System.out.println("Updated Comment: " + commentService.getCommentById("c1").get().getContent());
-
-        // Deleting a comment
-        commentService.deleteComment("c2");
-        System.out.println("All comments after deletion:");
-        for (Comment c : commentService.getAllComments()) {
-            System.out.println("Comment ID: " + c.getCommentId() + ", Content: " + c.getContent());
-        }
-        // Testing Upvote/Downvote Functionality
-    testUpvoteDownvoteFunctionality();
-
-    // Testing Sorting Functionality
-    testSortingFunctionality();
+    @Before
+    public void setUp() {
+        userService = new UserService();
+        postService = new PostService();
+        commentService = new CommentService();
     }
 
-    private static void testUpvoteDownvoteFunctionality() {
-        User user = new User("user1", "User One", "user1@example.com", "password");
-        Post post = new Post("post1", "Title 1", "Content 1", user);
-        Comment comment = new Comment("comment1", "Content", user, post);
-
-        // Simulate upvotes and downvotes
-        post.upvote("user2");
-        post.upvote("user4");
-        post.downvote("user3");
-        comment.upvote("user2");
-        comment.downvote("user3");
-
-        // Output the results
-        System.out.println("Post Karma: " + post.calculateKarma());
-        System.out.println("Comment Karma: " + comment.calculateKarma());
+    @Test
+    public void testAddUser() {
+        User newUser = new User("2", "TestUser", "flamingkittens@example.com", "password");
+        userService.addUser(newUser);
+        Optional<User> fetchedUser = userService.getUserById("2");
+        Assert.assertTrue(fetchedUser.isPresent());
+        Assert.assertEquals("TestUser", fetchedUser.get().getUsername());
     }
 
-    private static void testSortingFunctionality() {
-        List<Post> posts = createSamplePosts();
-
-        // Sorting posts by Karma
-        PostService postService = new PostService();
-        postService.sortPosts(posts, "karma");
-
-        // Output sorted posts
-        System.out.println("Posts sorted by Karma:");
-        for (Post post : posts) {
-            System.out.println(post.getTitle() + " - Karma: " + post.calculateKarma());
-        }
+    @Test
+    public void testGetUserById() {
+        User newUser = new User("3", "AnotherUser", "flamingkittens@example.com", "password");
+        userService.addUser(newUser);
+        Optional<User> fetchedUser = userService.getUserById("3");
+        Assert.assertTrue(fetchedUser.isPresent());
+        Assert.assertEquals("AnotherUser", fetchedUser.get().getUsername());
     }
 
-    private static List<Post> createSamplePosts() {
+    @Test
+    public void testAddPost() {
+        User user = new User("4", "PostUser", "flamingkittens@example.com", "password");
+        userService.addUser(user);
+        Post newPost = new Post("post2", "Test Post", "Content of the test post.", user);
+        postService.addPost(newPost);
+        Optional<Post> fetchedPost = postService.getPostById("p2");
+        Assert.assertTrue(fetchedPost.isPresent());
+        Assert.assertEquals("Test Post", fetchedPost.get().getTitle());
+    }
+
+    @Test
+    public void testGetPostById() {
+        User user = new User("5", "PostUser2", "flamingkittens@example.com", "password");
+        userService.addUser(user);
+        Post newPost = new Post("post3", "Another Test Post", "Content of another test post.", user);
+        postService.addPost(newPost);
+        Optional<Post> fetchedPost = postService.getPostById("p3");
+        Assert.assertTrue(fetchedPost.isPresent());
+        Assert.assertEquals("Another Test Post", fetchedPost.get().getTitle());
+    }
+
+    @Test
+    public void testSortPostsByKarma() {
         List<Post> posts = new ArrayList<>();
-        User user = new User("user1", "User One", "user1@example.com", "password");
 
-        // Create sample posts with different Karma values
-        for (int i = 1; i <= 5; i++) {
-            Post post = new Post("post" + i, "Title " + i, "Content " + i, user);
-            // Simulate upvotes and downvotes
-            for (int j = 0; j < i; j++) {
-                post.upvote("user" + (j + 2)); // Different users upvoting
+        // Create posts with varying karma values
+        for (int i = 0; i < 5; i++) {
+            User user = new User("user" + i, "User" + i, "user" + i + "@example.com", "password");
+            userService.addUser(user);
+            Post post = new Post("post" + i, "Title" + i, "Content" + i, user);
+
+            // Simulate different numbers of upvotes and downvotes
+            for (int j = 0; j <= i; j++) {
+                post.upvote("user" + j);
             }
             if (i % 2 == 0) {
-                post.downvote("user" + (i + 1)); // Simulate a downvote for even posts
+                post.downvote("user" + (i + 1));
             }
+
             posts.add(post);
         }
 
-        return posts;
+        // Sort the posts by karma
+        postService.sortPosts(posts, "karma");
+
+        // Verify the sorting order
+        Assert.assertTrue(isSortedByKarma(posts));
     }
-    
+
+    private boolean isSortedByKarma(List<Post> posts) {
+        for (int i = 1; i < posts.size(); i++) {
+            if (posts.get(i - 1).calculateKarma() < posts.get(i).calculateKarma()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Test
+    public void testAddComment() {
+        User user = new User("6", "CommentUser", "flamingkittens@example.com", "password");
+        userService.addUser(user);
+        Post post = new Post("post4", "Post for Comment", "Content for post", user);
+        postService.addPost(post);
+        Comment newComment = new Comment("comment3", "Test Comment", user, post);
+        commentService.addComment(newComment);
+        Optional<Comment> fetchedComment = commentService.getCommentById("c3");
+        Assert.assertTrue(fetchedComment.isPresent());
+        Assert.assertEquals("Test Comment", fetchedComment.get().getContent());
+    }
+
+    @Test
+    public void testGetCommentById() {
+        User user = new User("7", "CommentUser2", "flamingkittens@example.com", "password");
+        userService.addUser(user);
+        Post post = new Post("post5", "Another Post for Comment", "Content for another post", user);
+        postService.addPost(post);
+        Comment newComment = new Comment("comment4", "Another Test Comment", user, post);
+        commentService.addComment(newComment);
+        Optional<Comment> fetchedComment = commentService.getCommentById("c4");
+        Assert.assertTrue(fetchedComment.isPresent());
+        Assert.assertEquals("Another Test Comment", fetchedComment.get().getContent());
+    }
+
+    @Test
+    public void testUpdateComment() {
+        User user = new User("8", "UpdateCommentUser", "flamingkittens@example.com", "password");
+        userService.addUser(user);
+        Post post = new Post("post6", "Post for Updated Comment", "Content for post", user);
+        postService.addPost(post);
+        Comment comment = new Comment("comment5", "Original Comment", user, post);
+        commentService.addComment(comment);
+        commentService.updateComment("comment5", "Updated Comment");
+        Optional<Comment> fetchedComment = commentService.getCommentById("c5");
+        Assert.assertTrue(fetchedComment.isPresent());
+        Assert.assertEquals("Updated Comment", fetchedComment.get().getContent());
+    }
+
+    @Test
+    public void testUpvoteDownvoteFunctionality() {
+        User user = new User("userTest", "User Test", "flamingkittens@example.com", "password");
+        userService.addUser(user);
+        Post post = new Post("postTest", "Test Post", "Test Content", user);
+        postService.addPost(post);
+        Comment comment = new Comment("commentTest", "Test Comment", user, post);
+        commentService.addComment(comment);
+
+        // Simulate upvotes and downvotes
+        post.upvote("user1");
+        post.downvote("user2");
+        comment.upvote("user3");
+        comment.downvote("user4");
+
+        // Check the karma calculations
+        int expectedPostKarma = 0; // Assuming 1 upvote - 1 downvote
+        int expectedCommentKarma = 0; // Assuming 1 upvote - 1 downvote
+        Assert.assertEquals(expectedPostKarma, post.calculateKarma());
+        Assert.assertEquals(expectedCommentKarma, comment.calculateKarma());
+    }
 }

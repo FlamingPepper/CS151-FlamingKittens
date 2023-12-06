@@ -10,9 +10,10 @@ public class User {
     private String email;
     private String password;
     private LocalDateTime createdAt;
-
     private List<Post> posts;
     private List<Comment> comments;
+    private int totalKarma;
+    private String profileImageUrl;
 
     public User(String userId, String username, String email, String password) {
         this.userId = userId;
@@ -22,12 +23,14 @@ public class User {
         this.createdAt = LocalDateTime.now();
         this.posts = new ArrayList<>();
         this.comments = new ArrayList<>();
+
     }
 
     // Getters
     public String getUserId() {
         return userId;
     }
+    
 
     public String getUsername() {
         return username;
@@ -51,6 +54,10 @@ public class User {
 
     public List<Comment> getComments() {
         return comments;
+    }
+
+    public String getProfileImageUrl() {
+        return profileImageUrl;
     }
 
     // Setters
@@ -78,15 +85,21 @@ public class User {
         this.comments = comments;
     }
 
+    public void setProfileImageUrl(String profileImageUrl) {
+        this.profileImageUrl = profileImageUrl;
+    }
+
     public int calculateTotalKarma() {
-        int totalKarma = 0;
-        for (Post post : posts) {
+        for (Post post : this.posts) {
             totalKarma += post.calculateKarma();
         }
-        for (Comment comment : comments) {
+        for (Comment comment : this.comments) {
             totalKarma += comment.calculateKarma();
         }
         return totalKarma;
     }
-    
+
+    public int getKarma() {
+        return calculateTotalKarma();
+    }
 }

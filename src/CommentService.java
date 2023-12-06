@@ -7,7 +7,7 @@ import java.util.Optional;
 import java.util.Collections;
 
 public class CommentService {
-    private final List<Comment> comments;
+    private static List<Comment> comments;
 
     public CommentService() {
         this.comments = new ArrayList<>();
@@ -25,7 +25,7 @@ public class CommentService {
                 .findFirst();
     }
 
-    public List<Comment> getAllComments() {
+    public static List<Comment> getAllComments() {
         comments.sort(Comparator.comparing(Comment::getCreatedAt)); // Sort by creation time
         return new ArrayList<>(comments);
     }
@@ -48,5 +48,5 @@ public class CommentService {
             Collections.sort(comments, Comparator.comparing(Comment::getCreatedAt));
         }
     }
-    
+
 }
