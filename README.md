@@ -2,25 +2,25 @@
 
 Team members: Brandon Ho, Ken Duong, Mike Chau
 
-Project Structure
+### Project Structure
 
-**Classes:** <br />
-**Main** <br />
-Tests the usage of other classes by creating users, posts, and comments. It also includes posts and comments up and downvotes. <br />
-**Post** <br />
-Manages post-related operations, including getters, setters, constructors, upvoting, and karma calculation. <br />
-**PostService** <br />
-Handles the management of posts. It implements the CRUD(Create, Read, Update, Delete) operations for posts. It includes a method to be able to choose between sorting users/comments/posts on date created/ karma! <br />
-**Comment** <br />
-Contains constructors, getters, and setters which are used in the CommentService class. Modified to incorporate functionality for upvoting, downvoting, and karma calculation with comments. <br />
-**CommentService** <br />
-Handles the management of comments. It implements the CRUD(Create, Read, Update, Delete) operations for comments. It includes a method to be able to choose between sorting comments on date-created and karma! <br />
-**User** <br />
-The backbone blueprint for creating user objects. Contains information about a user, including their identification, credentials, creation timestamp, associated posts, comments, karma, and methods for accessing and modifying this information. Handles the calculation of user karma based on their posts and comments upvotes and downvotes. <br />
-**UserService** <br />
-Handles the management of user-related operations. It implements the CRUD(Create, Read, Update, Delete) operations for the user. Services include a method to be able to choose between sorting users on the date created and karma! <br />
+#### Classes
 
-**ChangeLog:** <br />
-**User Class:** Updated to include fields for karma, associated posts, comments, and methods to calculate user karma based on the upvotes and downvotes of their posts and comments. It also includes methods for upvoting and downvoting posts/comments.<br />
-**Post and Comment Classes:** Modified to incorporate functionality for upvoting, downvoting, and karma calculation within the classes themselves.<br />
-**UserService, PostService, and CommentService Classes:** Remain consistent in their responsibilities for CRUD operations on users, posts, and comments respectively, without directly handling karma or voting logic, delegating these responsibilities to the respective classes (User, Post, Comment). Services include a method to be able to choose between sorting users/comments/posts on date created/ karma!<br />
+- **Main**: Tests the functionality of other classes by creating users, posts, and comments. Manages up and downvotes for posts and comments.
+- **Post**: Manages post-related operations including getters, setters, constructors, upvoting, and karma calculation.
+- **PostService**: Manages posts, implementing CRUD operations for posts. Includes methods to sort posts by date-created and karma.
+- **Comment**: Contains constructors, getters, and setters for use in the CommentService class. Modified for upvoting, downvoting, and karma calculation.
+- **CommentService**: Manages comments, implementing CRUD operations. Includes methods to sort comments by date-created and karma.
+- **User**: Blueprint for creating user objects, managing user information, associated posts, comments, karma, and calculations based on upvotes/downvotes.
+- **UserService**: Handles user-related operations, implementing CRUD operations. Includes methods to sort users by date-created and karma.
+- **RedditClone**: Manages the overall application functionality, initializing UI and coordinating interactions between components. Handles page creation, UI layout, and user interaction.
+
+### Change Log
+
+#### Changes Made:
+
+- **User Class**: Updated to include fields for karma, associated posts, comments, and methods for karma calculation based on upvotes and downvotes. Added methods for upvoting and downvoting posts/comments.
+- **Post and Comment Classes**: Modified to incorporate functionality for upvoting, downvoting, and karma calculation within the classes.
+- **UserService, PostService, and CommentService Classes**: Remain consistent in CRUD responsibilities for users, posts, and comments. Delegates karma/voting logic to respective classes (User, Post, Comment). Includes methods for sorting users/posts/comments by date created/karma.
+- **RedditClone Class**: Implemented Home, Comments, and Users pages. Designed UI layout for navigation, post display, and user interaction using JavaFX components. Handles post/comment upvoting and downvoting. Allows profile picture uploads via FileChooser.
+
